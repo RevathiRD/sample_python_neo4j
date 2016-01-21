@@ -1,7 +1,14 @@
 language: python
 
 python:
+  - 2.6
   - 2.7
+  - 3.2
+  - 3.3
+  - 3.4
+  - 3.5
+  - pypy
+  - pypy3
 
 # Mongo binds to 127.0.0.1 by default
 services:
@@ -9,6 +16,7 @@ services:
 
 install:
   - pip install -r requirements.txt
+  - if [[ $VIRTUALENV_PYTHON == '3.2' ]]; then pip install coverage==3.7.1 codecov ; fi
 
 # Make folders for the reports
 before_script:
